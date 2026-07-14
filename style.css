@@ -1,0 +1,59 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:#f8f8f6;color:#222;line-height:1.7}
+
+.header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 6%;background:transparent;transition:.3s;z-index:1000}
+.header.scrolled{background:#f8f8f6;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+.logo img{height:54px}
+
+nav{display:flex;gap:28px;align-items:center}
+nav a{text-decoration:none;color:#222}
+.btn{padding:12px 24px;border-radius:999px;background:#123f73;color:#fff;text-decoration:none}
+
+/* Botó hamburguesa: ocult en escriptori */
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;cursor:pointer;z-index:1100}
+.burger span{display:block;height:3px;width:100%;background:#123f73;border-radius:2px;transition:.3s}
+.header.scrolled .burger span{background:#123f73}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+.hero,.cta,.contact{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero img,.cta img,.contact img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero img{height:130%;top:-15%}
+.overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.25))}
+.content,.cta div,.contact div{position:relative;max-width:700px;padding:8%;color:#fff}
+.cta a.btn,.contact a.btn{display:inline-block;margin-top:10px}
+
+section:not(.hero):not(.cta):not(.contact){padding:100px 8%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:40px}
+.grid div{background:#fff;padding:30px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+
+footer{background:#111;color:#eee;text-align:center;padding:50px 20px}
+footer img{margin-bottom:20px}
+
+@media(max-width:1024px){
+  .burger{display:flex}
+
+  nav{
+    position:fixed;
+    top:0; right:0;
+    height:100vh;
+    width:min(78vw,320px);
+    background:#f8f8f6;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    gap:26px;
+    padding:40px 10%;
+    transform:translateX(100%);
+    transition:transform .35s ease;
+    box-shadow:-8px 0 24px rgba(0,0,0,.12);
+  }
+  nav.open{transform:translateX(0)}
+  nav a{font-size:1.1rem}
+  nav a.btn{margin-top:10px}
+
+  .hero,.cta,.contact{min-height:80vh}
+  .content,.cta div,.contact div{padding:12%}
+}
